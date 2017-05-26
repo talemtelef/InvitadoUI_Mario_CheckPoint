@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "921231700794",
+    "firebase_url": "https://dsmeteomodeladoapi-master.firebaseio.com",
+    "project_id": "dsmeteomodeladoapi-master",
+    "storage_bucket": "dsmeteomodeladoapi-master.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:921231700794:android:d299217922f95feb",
+        "android_client_info": {
+          "package_name": "com.example.monitor.comunicacion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "921231700794-f7pa20v4lkc347357gfajp3lb0h3477q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.monitor.comunicacion",
+            "certificate_hash": "9a2d5b9ee9fab91766c814f8df1efc09de57f1c4"
+          }
+        },
+        {
+          "client_id": "921231700794-70g6gluqvbuaaovd46p1ldv0aq2adcgi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjrnN4md3laax0OuDUpIPPuBgquD-nZR0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "921231700794-70g6gluqvbuaaovd46p1ldv0aq2adcgi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
