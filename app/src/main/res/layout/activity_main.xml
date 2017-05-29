@@ -8,14 +8,14 @@
     tools:context="com.example.monitor.comunicacion.MainActivity">
 
 
-    <ImageButton
-        android:id="@+id/imageButton"
+    <ImageView
+        android:id="@+id/imageViewIconos"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="88dp"
-        app:srcCompat="@color/colorAccent" />
+        app:srcCompat="@drawable/icono2" />
 
     <Button
         android:id="@+id/button2"
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/imageButton"
+        android:layout_alignStart="@+id/imageViewIconos"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="32dp"
@@ -45,8 +45,8 @@
         android:id="@+id/MinMax"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/imageButton"
-        android:layout_below="@+id/imageButton"
+        android:layout_alignStart="@+id/imageViewIconos"
+        android:layout_below="@+id/imageViewIconos"
         android:layout_marginTop="32dp"
         android:text="Min Max"
         android:textColor="@android:color/black"

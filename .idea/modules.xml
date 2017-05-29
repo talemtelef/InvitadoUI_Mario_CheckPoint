@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Comunicacion.iml" filepath="$PROJECT_DIR$/Comunicacion.iml" />
-      <module fileurl="file://$PROJECT_DIR$/INVITADO-dsMeteo_modeladoAPI-master-versionInvitado.iml" filepath="$PROJECT_DIR$/INVITADO-dsMeteo_modeladoAPI-master-versionInvitado.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/copiaseguridadcheckpoint-INVITADO.iml" filepath="$PROJECT_DIR$/copiaseguridadcheckpoint-INVITADO.iml" />
     </modules>
   </component>
 </project>

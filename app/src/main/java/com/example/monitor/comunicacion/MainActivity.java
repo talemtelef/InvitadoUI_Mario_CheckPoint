@@ -1,9 +1,11 @@
 package com.example.monitor.comunicacion;
 
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView Ciudad;
     TextView MinMax;
+    ImageView imageViewIconos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,16 +28,22 @@ public class MainActivity extends AppCompatActivity {
 
         Ciudad = (TextView) this.findViewById(R.id.Ciudad);
         MinMax = (TextView) this.findViewById(R.id.MinMax);
+        imageViewIconos=(ImageView)this.findViewById(R.id.imageViewIconos);
     }
 
 
     public void cargar(View v){
         ComunicacionTask com=new ComunicacionTask();
         Temperatura temperatura_asignacion = new Temperatura();
+        Precipitaciones precipitaciones=new Precipitaciones();
+
+        //Falta añadir la base de datos para seleccionar la ciudad.
+        String ciudad_database = "http://www.aemet.es/xml/municipios/localidad_09059.xml";
 
 
         com.execute("http://www.aemet.es/xml/municipios/localidad_09059.xml"); //Burgos
         temperatura_asignacion.execute("http://www.aemet.es/xml/municipios/localidad_09059.xml");
+        precipitaciones.execute(ciudad_database);
 
     }
 
@@ -185,6 +194,66 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
+
+
+    protected class Precipitaciones extends AsyncTask<String, Void, Drawable> {
+
+
+        @Override
+        protected Drawable doInBackground(String... params) {
+
+            double media_prob_precipitacion = 0;
+            String valor_icono="";
+            Drawable valor_icono_tipo_drawable=getDrawable(R.drawable.icono0);
+
+            try {
+                URL url = new URL(params[0]);
+                URLConnection con = url.openConnection();
+
+                InputStream is = con.getInputStream();
+                Document doc;
+                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder builder;
+                builder = factory.newDocumentBuilder();
+                doc = builder.parse(is);
+
+                //RECUPERAMOS LOS ELEMENTOS DEL API http://www.aemet.es/xml/municipios/localidad_09059.xml , EN ESTE CASO PARA BURGOS.
+
+                NodeList listaPrecip = doc.getElementsByTagName("prob_precipitacion");
+
+                //CALCULAMOS LA MEDIA DE LAS PROBABILIDADES DE PRECIPITACIÓN, ASEGURANDONOS ASÍ QUE NO COJEMOS VALORES NULOS DE LOS DISTINTOS PERIODOS DE PROBABILIDAD.
+
+                for (int i = 0; i <= 6; i++) {
+                    String valor = listaPrecip.item(i).getTextContent();
+                    if (valor == null || valor.equals("")) {
+                        valor = "0";
+                    }
+                    media_prob_precipitacion += Double.parseDouble(valor);
+                }
+                media_prob_precipitacion = media_prob_precipitacion / 7;
+
+                if (media_prob_precipitacion<100){
+                    valor_icono_tipo_drawable=getDrawable(R.drawable.icono0);
+
+                }
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+
+            } return valor_icono_tipo_drawable;
+
+        }
+
+        @Override
+        protected void onPostExecute(Drawable result) {
+
+            imageViewIconos.setImageDrawable(result);
+
+        }
+
+    }
 
 
 
