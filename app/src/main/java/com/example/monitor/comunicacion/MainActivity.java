@@ -233,11 +233,27 @@ public class MainActivity extends AppCompatActivity {
                     media_prob_precipitacion += Double.parseDouble(valor);
                 }
                 media_prob_precipitacion = media_prob_precipitacion / 7;
+                int media_entera = (int) media_prob_precipitacion;
 
-                if (media_prob_precipitacion<100){
+                //HACEMOS EL FILTRO PARA LAS IMÁGENES.
+
+                if (media_prob_precipitacion<20){
                     valor_icono_tipo_drawable=getDrawable(R.drawable.icono0);
 
                 }
+                else if (media_prob_precipitacion<40 ){
+                    valor_icono_tipo_drawable=getDrawable(R.drawable.icono1);
+                }
+                else if (media_prob_precipitacion<60 ){
+                    valor_icono_tipo_drawable=getDrawable(R.drawable.icono2);
+                }
+                else if (media_prob_precipitacion<80 ){
+                    valor_icono_tipo_drawable=getDrawable(R.drawable.icono3);
+                }
+                else if (media_prob_precipitacion<100 ){
+                    valor_icono_tipo_drawable=getDrawable(R.drawable.icono4);
+                }
+
 
             } catch (Exception ex) {
                 ex.printStackTrace();
